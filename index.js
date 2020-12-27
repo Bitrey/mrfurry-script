@@ -10,13 +10,23 @@ const amazonUrl =
     "https://www.amazon.it/Gigabyte-GeForce-RTX-3070-GAMING/dp/B08KHL21CV/";
 const alertNum = 700;
 
+const randomRange = (min, max) => {
+    return Math.random() * (max - min) + min;
+};
+
 const getPrice = () => {
     return new Promise(async (resolve, reject) => {
         try {
-            const { data } = await axios.get(amazonUrl, {
+            const { data } = await axios({
+                method: "get",
+                url: amazonUrl,
                 headers: {
                     "User-Agent":
-                        "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/41.0.2228.0 Safari/537.36"
+                        "Mozilla/5.0 (Windows NT 6.1) AppleWebKit/" +
+                        randomRange(500, 600) +
+                        ".36 (KHTML, like Gecko) Chrome/" +
+                        randomRange(30, 87) +
+                        ".0.2228.0 Safari/537.36"
                 }
             });
             logger.debug("richiesta ok");
