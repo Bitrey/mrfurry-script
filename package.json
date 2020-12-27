@@ -1,0 +1,22 @@
+{
+    "name": "script-furry",
+    "version": "1.0.0",
+    "description": "",
+    "main": "index.js",
+    "scripts": {
+        "test": "echo \"Error: no test specified\" && exit 1"
+    },
+    "author": "Bitrey",
+    "license": "ISC",
+    "dependencies": {
+        "axios": "^0.21.1",
+        "cheerio": "^1.0.0-rc.5",
+        "dotenv": "^8.2.0",
+        "express": "^4.17.1",
+        "socket.io": "^3.0.4",
+        "winston": "^3.3.3"
+    },
+    "devDependencies": {
+        "nodemon": "^2.0.6"
+    }
+}

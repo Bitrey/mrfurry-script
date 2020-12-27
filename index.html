@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <title>sito furry</title>
+        <style>
+            body {
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                padding: 10px;
+            }
+
+            span {
+                font-weight: 600;
+            }
+
+            #console {
+                word-wrap: break-word;
+                background-color: black;
+                color: lime;
+                padding-left: 10px;
+                padding-right: 10px;
+                padding-top: 5px;
+                padding-bottom: 5px;
+                font-family: "Courier New", Courier, monospace;
+                width: 500px;
+                overflow-y: auto;
+                height: 300px;
+                font-size: 0.8rem;
+            }
+        </style>
+    </head>
+    <body onload="main()">
+        <h1>pagina furry</h1>
+        <p id="loading-info">caricamento dati...</p>
+
+        <div>
+            <label for="attesa">Ritardo tra richieste</label>
+            <input
+                type="range"
+                min="5000"
+                max="120000"
+                value="20000"
+                id="attesa"
+                oninput="updateSlider()"
+            />
+            <span id="attesa-output">20000ms (20sec)</span>
+            <p>se ti da un errore 503 prova ad aumentare il ritardo</p>
+        </div>
+
+        <div style="margin-top: 20px; margin-bottom: 20px">
+            <label for="volume">Volume audio</label>
+            <input
+                type="range"
+                min="0"
+                max="100"
+                value="100"
+                id="volume"
+                oninput="updateVolume()"
+            />
+            <span id="volume-output">100%</span>
+        </div>
+
+        <div id="data-div" style="display: none">
+            <hr />
+            <p>Amazon URL: <a href="#" id="url">X</a></p>
+            <p>Prezzo attuale: <span id="prezzo">X</span></p>
+            <p>Obiettivo prezzo max: <span id="max">X</span></p>
+            <p>Prezzo attuale < prezzo max: <span id="minore">X</span></p>
+            <p>Ultimo fetch dati: <span id="data">X</span></p>
+            <hr />
+        </div>
+        <p>Errore: <span id="errore">null</span></p>
+        <p style="margin-top: 10px"><strong>Premi almeno una volta:</strong></p>
+        <button onclick="startAlert(true)">Prova audio per 10 sec</button>
+
+        <div>
+            <p style="margin-top: 30px; margin-bottom: 0">
+                <strong>Log</strong>
+                <span style="width: 200px"></span>
+                <input type="checkbox" id="autoscroll" checked />
+                <label for="autoscroll"> Autoscroll</label>
+            </p>
+            <br />
+        </div>
+        <div id="console"></div>
+
+        <!-- Axios -->
+        <script
+            src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"
+            defer
+        ></script>
+        <!-- Socket.io -->
+        <script
+            src="https://cdn.socket.io/socket.io-3.0.1.min.js"
+            defer
+        ></script>
+        <!-- Main script -->
+        <script src="/client.js" defer></script>
+    </body>
+</html>
